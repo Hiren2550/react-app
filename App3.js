@@ -16,7 +16,6 @@ async function main() {
 }
 main().catch((err) => console.log(err));
 
-const __dirname = path.resolve();
 //body-parser
 // console.log('env',process.env.DB_PASSWORD);
 app.use(cors());
@@ -25,7 +24,7 @@ app.use(morgan("dev", "default"));
 app.use("/products", productRouter.Router);
 app.use("/users", userRouter.Router);
 
-app.use(express.static(path.join(__dirname, "react-app/build")));
+app.use(express.static(path.join("react-app", "build")));
 app.use("*", (req, res) => {
   res.sendFile(path.join(__dirname, "react-app", "build", "index.html"));
 });

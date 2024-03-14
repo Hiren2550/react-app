@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Css grid and layout</title>
+    <style>
+        .container
+        {
+            display: grid;
+            grid-gap: 1rem;
+            grid-template-areas: 
+            'bar bar bar aside'
+            'section section section aside'
+            'footer footer footer aside'
+            
+            ;
+        }
+        .item
+        {
+            border: 1px solid yellow;
+            background-color: rgb(157, 156, 236);
+            padding: 20px;
+
+        }
+        #navbar{
+            grid-area: bar;
+        }
+        #section{
+            grid-area: section;
+            display: grid;
+            grid-template-columns:1fr 2fr 3fr;
+            grid-gap: 1rem;
+        }
+        .box
+        {
+            border: 1px solid green;
+            background-color: yellow;
+            padding: 10px;
+        }
+        #aside{
+            grid-area: aside;
+        }
+        #footer{
+            grid-area: footer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item" id="navbar">
+            home About contact blog
+        </div>
+        
+        <div id="section" class="item">
+            <div class="box">
+             nostrum laudantium! Adipisci consequatur eos nobis quam eaque eius doloribus. Veritatis non autem recusandae quia sint ducimus quam nisi. Pariatur a, dolorum labore consectetur eius eaque fugiat minima architecto possimus inventore ea harum ut ad sint et dolor, quas iure neque commodi repudiandae, rerum i
+            </div>
+            <div class="box">
+                  doloribus nesciunt tempora, laborum necessitatibus consequuntur expedita quibusdam provident aperiam atque harum temporibus. Necessitatibus nam culpa dolore aperiam, a quaerat molestiae itaque quos vel? Voluptatem, sequi!
+            </div>
+            <div class="box">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta nobis voluptatibus ducimus fuga inventore iure, nostrum laudantium! Adipisci consequatur eos nobis quam inima architecto possimus inventore ea harum ut ad sint et dolor, quas iure neque commodi repudiandae, rerum i
+            </div>
+        </div>
+
+        <div id="aside" class="item">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, pariatur animi alias molestias impedit soluta eius aspernatur cum odit debitis quo neque, distinctio nemo rerum obcaecati repellat temporibus cupiditate adipisci veritatis nulla minus. Nihil, rerum quaerat eum dolores cum dolore fuga corrupti unde quam obcaecati incidunt enim dolor deleniti, modi in facere sint repellat. Tempora iusto ipsa aperiam est eos amet vitae praesentium voluptatum adipisci delectus ullam, aut libero quae assumenda temporibus. Itaque corrupti laboriosam animi!
+
+
+        </div>
+        <div id="footer" class="item">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium deleniti voluptatum asperiores tempora facilis illum nihil! Assumenda quae cumque illum ex culpa! Soluta.
+        </div>
+</body>
+</html>

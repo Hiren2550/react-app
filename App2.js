@@ -3,6 +3,7 @@
 
 const express=require('express');
 const fs=require('fs');
+const path = require('path');
 app=express();
 
 const data=JSON.parse(fs.readFileSync('data.json'));
@@ -59,7 +60,9 @@ app.delete('/products/:id',(req,res)=>{
     res.status(201).json({"type":'PUT'});
 })
 
-
+app.get('/',(req,res)=>{
+    res.sendFile(path.join(__dirname,'temp.html'));
+})
 
 
 

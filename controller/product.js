@@ -1,8 +1,27 @@
 const fs= require('fs');
+const path=require('path');
 // const data=JSON.parse(fs.readFileSync('data.json'));
 // let products=data.products;
 const model=require("../model/product");
 const Product=model.Product;
+
+const ejs=require('ejs');
+
+exports.getAllProductsSSR=async(req,res)=>{
+    const products=await Product.find({})
+    console.log("ssr")
+    ejs.renderFile(path.join(__dirname,'../pages/index.ejs'),{products:products},function(err, str){
+        // str => Rendered HTML string
+        res.send(str)
+    });
+}
+exports.getAddForm=async(req,res)=>{
+    ejs.renderFile(path.join(__dirname,'../pages/form.ejs'),function(err, str){
+        // str => Rendered HTML string
+        res.send(str)
+    });
+}
+
 
 exports.createProduct =async(req,res)=>{
    
@@ -24,8 +43,23 @@ exports.createProduct =async(req,res)=>{
 
 
 exports.getAllProducts=async(req,res)=>{
-     const products=await Product.find({})
-     res.json(products);
+        
+        let query=Product.find();
+        console.log(req.query);
+        if(req.query.sort){
+            
+            const products=await query.sort({[req.query.sort]:req.query.order}).limit(req.query.limit).exec();
+            res.json(products);  
+            //localhost:8000/products?sort=rating&order=asc&limit=2
+            //localhost:8000/products?sort=price&order=desc&limit=2
+            //localhost:8000/products?sort=discountPercentage&order=desc&limit=4
+        }
+        else
+        {
+            const products=await query.exec();
+            res.json(products);  
+        }
+     
 }
 
 
